@@ -1,0 +1,10 @@
+sudo apt install git
+git --version
+
+git config --global user.name "AndreiB-v"
+git config --global user.email "andreibogdantsev@yandex.ru"
+
+git config --global --get user.name
+git config --global --get user.email
+
+git config --global core.quotepath false

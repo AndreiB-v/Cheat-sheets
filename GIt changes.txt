@@ -16,3 +16,6 @@ git commit -m 'commit text'
 # С выбором ветки, следующие (просто git push) будут делаться в эту ветку, если явно не указать новою ветку 
 git push -u origin <your branch>
 git push
+
+# Принудительное переименование текущей ветки
+git branch -M main

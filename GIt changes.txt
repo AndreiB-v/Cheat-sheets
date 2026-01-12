@@ -63,4 +63,4 @@ git branch <branch_name>
 
 git checkout <branch_name>
 # Переключение на ветку
-
+# -b - с созданием новой ветки с этим названием

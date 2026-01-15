@@ -7,7 +7,7 @@ FROM <image>
 LABEL <key>="<value>" <key>="<value>" ...
 
 # Выполнение команды (при запуске!)
-# CMD - позволяет в строчке запуска использовать другую команду *docker container run -it image:tag /bin/bash)
+# CMD - позволяет в строчке запуска использовать другую команду (*docker container run -it image:tag /bin/bash)
 # ENYPOINT - не позволяет в строчке запуска использовать другую команду
 CMD <command>
 ENYPOINT <command>
@@ -17,6 +17,23 @@ ENYPOINT <command>
 RUN <command>
 # -y - в конце команды - автоматическое согласие пользователя
 
+# Установка рабочей дирректории
+WORKDIR <path>
+
+# Добавление файла в образ
+COPY <from_path> <to_path>
+# Путь <from_path> — это путь к файлу с начальной директорией там, где находится Dockerfile
+# Путь <to_path> — это путь, куда вы будете копировать файл внутри контейнера
+
+# Объявление переменной
+ENV <variable_name> = <value>
+# Взаимодействие с переменной: ${variable_name}
+
+# Передача аргументов во время сборки образа
+ARG <variable_name>
+# Во время сборки --build-arg variable_name=value (*docker build --build-arg arg_app_version=2.0 -t mydocker:v4)
+# Аргументы в Dockerfile позволяет передать значение из командной строки во время сборки. Они будут недоступны во время выполнения контейнера
+
 
 ============================== Сборка образа ==============================
 
@@ -25,5 +42,16 @@ docker build .
 # -t - Присвоение тэга и имени сразу (-t <image_name:image_tag> .)
 
 # Присвоение тэга и имени
-docker tag <IMAGE_ID> <image_name:image_tag> 
+docker tag <IMAGE_ID> <image_name:image_tag>
 
+
+
+============================ Exec и shell формы ===========================
+
+# Exec предпочтительнее для простых команд, shell — для сложных команд с логикой оболочки
+
+# shell формат
+CMD mkdir dir_name
+
+# exec формат
+CMD ["mkdir","dir_name"]
